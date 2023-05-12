@@ -3,10 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
+    "dev": "next dev",
     "start": "next start",
-    "lint": "next lint"
+    "postinstall": "prisma generate",
+    "lint": "next lint",
+    "format": "prettier --write ./src",
+    "seed": "NODE_ENV=development prisma db seed",
+    "typecheck": "tsc --pretty --noEmit"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "^4.14.0",
