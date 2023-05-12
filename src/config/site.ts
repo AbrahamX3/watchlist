@@ -1,8 +1,9 @@
 export const config = {
-  name: "Abraham's Watchlist",
+  name: "Abraham's Personal Watchlist",
   url: "https://watchlist.abraham-dev.tech",
-  ogImage: "https://watchlist.abraham-dev.tech/icon.png",
-  description: "Abraham's Personal Watchlist of Movies and TV Shows.",
+  ogImage: "https://watchlist.abraham-dev.tech/og_icon.png",
+  description:
+    "My personal watchlist of Movies and Series that I've watched, am watching and upcoming stuff that I'm intrested in.",
   keywords: ["watchlist", "movies", "tv"],
   links: {
     twitter: {
