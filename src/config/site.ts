@@ -1,7 +1,7 @@
 export const config = {
   name: "Abraham's Watchlist",
-  url: "https://ui.shadcn.com",
-  ogImage: "https://ui.shadcn.com/og.jpg",
+  url: "https://watchlist.abraham-dev.tech",
+  ogImage: "https://watchlist.abraham-dev.tech/icon.png",
   description: "Abraham's Personal Watchlist of Movies and TV Shows.",
   keywords: ["watchlist", "movies", "tv"],
   links: {

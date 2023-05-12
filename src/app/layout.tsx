@@ -38,8 +38,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: config.ogImage,
-        width: 1200,
-        height: 630,
+        width: 1002,
+        height: 1002,
         alt: config.name,
       },
     ],
@@ -52,9 +52,9 @@ export const metadata: Metadata = {
     creator: config.links.twitter.handle,
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
+    icon: "/logo.png",
+    shortcut: "/images/icons/icon-72x72.png",
+    apple: "/images/icons/icon-192x192.png",
   },
   manifest: `${config.url}/site.webmanifest`,
 };
@@ -66,6 +66,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/icon.png" sizes="any" />
+      </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="relative flex min-h-screen flex-col">
