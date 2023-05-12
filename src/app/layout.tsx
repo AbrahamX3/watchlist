@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/main/footer";
 import { SiteHeader } from "@/components/main/header";
 import { config } from "@/config/site";
 import { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -72,6 +73,7 @@ export default function RootLayout({
             <div className="flex-1">{children}</div>
             <SiteFooter />
           </div>
+          <Analytics />
           <TailwindIndicator />
         </ThemeProvider>
       </body>

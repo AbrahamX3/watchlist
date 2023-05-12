@@ -9,7 +9,7 @@ export function SiteFooter() {
           <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
             Built by{" "}
             <a
-              href={config.links.twitter}
+              href={config.links.twitter.url}
               target="_blank"
               rel="noreferrer"
               className="font-medium underline underline-offset-4"
