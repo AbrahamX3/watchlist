@@ -1,0 +1,75 @@
+import Link from "next/link";
+import { config } from "@/config/site";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
+import { ModeToggle } from "@/components/main/mode-toggle";
+import { Github, Globe, SeparatorVertical, Sheet, Twitter } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
+
+export function SiteHeader() {
+  return (
+    <header className="supports-backdrop-blur:bg-background/60 sticky top-0 z-40 w-full border-b bg-background/95 shadow-sm backdrop-blur">
+      <div className="container flex h-14 items-center">
+        <div className="mr-2 font-semibold flex items-center align-middle justify-center gap-2">
+          <Sheet className="h-5 w-5" />
+          <span>Abraham&apos;s Watchlist</span>
+        </div>
+        <div className="flex flex-1 items-center justify-between md:justify-end">
+          <nav className="flex items-center space-x-1">
+            <Link
+              href={config.links.website.url}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div
+                className={cn(
+                  buttonVariants({
+                    size: "sm",
+                    variant: "ghost",
+                  }),
+                  "w-9 px-0"
+                )}
+              >
+                <Globe className="h-5 w-5" />
+                <span className="sr-only">Website</span>
+              </div>
+            </Link>
+            <Link href={config.links.github} target="_blank" rel="noreferrer">
+              <div
+                className={cn(
+                  buttonVariants({
+                    size: "sm",
+                    variant: "ghost",
+                  }),
+                  "w-9 px-0"
+                )}
+              >
+                <Github className="h-5 w-5" />
+                <span className="sr-only">GitHub</span>
+              </div>
+            </Link>
+            <Link
+              href={config.links.twitter.url}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div
+                className={cn(
+                  buttonVariants({
+                    size: "sm",
+                    variant: "ghost",
+                  }),
+                  "w-9 px-0"
+                )}
+              >
+                <Twitter className="h-5 w-5 fill-current" />
+                <span className="sr-only">Twitter</span>
+              </div>
+            </Link>
+          </nav>
+          <ModeToggle />
+        </div>
+      </div>
+    </header>
+  );
+}

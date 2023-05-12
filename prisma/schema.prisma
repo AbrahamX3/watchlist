@@ -1,0 +1,38 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["jsonProtocol"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Type {
+  MOVIE
+  SERIES
+}
+
+enum Status {
+  UPCOMING
+  PENDING
+  WATCHING
+  UNFINISHED
+  FINISHED
+}
+
+model Watchlist {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  rating      Float?
+  year        String
+  imdbId      String
+  type        Type
+  status      Status
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
