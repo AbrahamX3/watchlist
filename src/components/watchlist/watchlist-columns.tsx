@@ -2,7 +2,7 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import { statusList, typeList } from "@/components/watchlist/options";
-import { DataTableColumnHeader } from "./data-table-column-header";
+import { DataTableColumnHeader } from "../table/data-table-column-header";
 import { type } from "os";
 import { Watchlist } from "@prisma/client";
 

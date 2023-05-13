@@ -3,8 +3,7 @@ import { config } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { ModeToggle } from "@/components/main/mode-toggle";
-import { Github, Globe, SeparatorVertical, Sheet, Twitter } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
+import { Github, Globe, Sheet, Twitter } from "lucide-react";
 
 export function SiteHeader() {
   return (
