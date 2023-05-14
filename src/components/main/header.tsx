@@ -10,8 +10,10 @@ export function SiteHeader() {
     <header className="supports-backdrop-blur:bg-background/60 sticky top-0 z-40 w-full border-b bg-background/95 shadow-sm backdrop-blur">
       <div className="container flex h-14 items-center">
         <div className="mr-2 font-semibold flex items-center align-middle justify-center gap-2">
-          <Sheet className="h-5 w-5" />
-          <span>Abraham&apos;s Watchlist</span>
+          <Link href="/" className="flex items-center gap-2 align-middle">
+            <Sheet className="h-5 w-5" />
+            <span>Abraham&apos;s Watchlist</span>
+          </Link>
         </div>
         <div className="flex flex-1 items-center justify-between md:justify-end">
           <nav className="flex items-center space-x-1">

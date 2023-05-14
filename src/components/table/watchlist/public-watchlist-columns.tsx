@@ -1,21 +1,12 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { statusList, typeList } from "@/components/watchlist/options";
-import { DataTableColumnHeader } from "../table/data-table-column-header";
-import { type } from "os";
+import { statusList, typeList } from "@/components/table/watchlist/options";
+import { DataTableColumnHeader } from "../data-table-column-header";
 import { Watchlist } from "@prisma/client";
+import { PublicDataTableRowActions } from "./public-row-actions";
 
-export const columns: ColumnDef<Watchlist>[] = [
-  // {
-  //   accessorKey: "id",
-  //   header: ({ column }) => (
-  //     <DataTableColumnHeader column={column} title="Task" />
-  //   ),
-  //   cell: ({ row }) => <div className="w-[80px]">{row.getValue("id")}</div>,
-  //   enableSorting: false,
-  //   enableHiding: false,
-  // },
+export const publicColumns: ColumnDef<Watchlist>[] = [
   {
     accessorKey: "title",
     header: ({ column }) => (
@@ -115,5 +106,9 @@ export const columns: ColumnDef<Watchlist>[] = [
     filterFn: (row, id, value) => {
       return value.includes(row.getValue(id));
     },
+  },
+  {
+    id: "actions",
+    cell: ({ row }) => <PublicDataTableRowActions row={row} />,
   },
 ];

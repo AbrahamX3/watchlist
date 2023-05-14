@@ -6,7 +6,7 @@ export default function Page() {
       <SignIn
         path="/sign-in"
         routing="path"
-        afterSignInUrl="/admin"
+        afterSignInUrl="/dashboard"
         appearance={{
           elements: {
             footerAction__signIn: {
