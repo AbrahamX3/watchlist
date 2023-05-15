@@ -30,9 +30,11 @@ model Watchlist {
   description String?
   rating      Float?
   year        String
-  imdbId      String
+  imdbId      String   @unique
+  tmdbId      String   @unique
+  poster      String?
   type        Type
-  status      Status
+  status      Status   @default(PENDING)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }

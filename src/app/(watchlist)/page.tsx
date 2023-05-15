@@ -8,9 +8,14 @@ export const metadata: Metadata = {
 };
 export default async function WatchList() {
   const data = await prisma.watchlist.findMany({
-    orderBy: {
-      year: "desc",
-    },
+    orderBy: [
+      {
+        title: "asc",
+      },
+      {
+        year: "desc",
+      },
+    ],
   });
 
   return (

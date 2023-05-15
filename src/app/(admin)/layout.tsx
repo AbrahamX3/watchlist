@@ -4,11 +4,11 @@ import { Inter } from "next/font/google";
 import { TailwindIndicator } from "@/components/main/tailwind-indicator";
 import { Analytics } from "@vercel/analytics/react";
 import { ClerkProvider } from "@clerk/nextjs";
-import { DashboardHeader } from "@/components/main/dashboard-header";
+import { DashboardHeader } from "@/components/main/dashboard/dashboard-header";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function RootLayout({
+export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;

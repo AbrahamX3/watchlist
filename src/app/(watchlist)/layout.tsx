@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   manifest: `${config.url}/site.webmanifest`,
 };
 
-export default function RootLayout({
+export default function WatchlistLayout({
   children,
 }: {
   children: React.ReactNode;

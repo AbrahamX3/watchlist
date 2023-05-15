@@ -1,5 +1,5 @@
 import { authMiddleware } from "@clerk/nextjs/server";
-const publicPaths = ["/", "/sign-in", "/sign-up"];
+const publicPaths = ["/", "/sign-in", "/sign-up", "/api/watchlist/(.*)"];
 
 export default authMiddleware({
   ignoredRoutes: [],
@@ -7,5 +7,5 @@ export default authMiddleware({
 });
 
 export const config = {
-  matcher: "/((?!_next/image|_next/static|favicon.ico|/public).*)",
+  matcher: "/((?!_next/image|_next/static|favicon.ico).*)",
 };
