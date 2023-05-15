@@ -5,8 +5,59 @@ import { TailwindIndicator } from "@/components/main/tailwind-indicator";
 import { Analytics } from "@vercel/analytics/react";
 import { ClerkProvider } from "@clerk/nextjs";
 import { DashboardHeader } from "@/components/main/dashboard/dashboard-header";
+import { Metadata } from "next";
+import { config } from "@/config/site";
 
 const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: {
+    default: config.name,
+    template: `${config.name} - %s`,
+  },
+  description: config.description,
+  keywords: config.keywords,
+  authors: [
+    {
+      name: config.links.website.author,
+      url: config.links.website.url,
+    },
+  ],
+  creator: config.links.website.author,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: config.url,
+    title: config.name,
+    description: config.description,
+    siteName: config.name,
+    images: [
+      {
+        url: config.ogImage,
+        width: 772,
+        height: 772,
+        alt: config.name,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: config.name,
+    description: config.description,
+    images: [config.ogImage],
+    creator: config.links.twitter.handle,
+  },
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/images/icons/icon-72x72.png",
+    apple: "/images/icons/icon-192x192.png",
+  },
+  manifest: `${config.url}/site.webmanifest`,
+};
 
 export default function DashboardLayout({
   children,
@@ -17,7 +68,7 @@ export default function DashboardLayout({
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
         <head>
-          <link rel="icon" href="/icon.png" sizes="any" />
+          <link rel="shortcut icon" href="/icon.png" type="image/x-icon" />
         </head>
         <body className={inter.className}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

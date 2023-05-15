@@ -25,7 +25,10 @@ export default function SelectStatus({
         Status
       </Label>
       <div className="col-span-3">
-        <Select onValueChange={(value) => setStatus(value)} value={value}>
+        <Select
+          onValueChange={(value) => setStatus(value)}
+          value={value ? value : ""}
+        >
           <SelectTrigger id="status" className="truncate">
             <SelectValue placeholder="Status" />
           </SelectTrigger>

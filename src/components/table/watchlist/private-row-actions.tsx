@@ -83,10 +83,10 @@ export function PrivateDataTableRowActions<TData>({
           <DialogHeader>
             <DialogTitle>
               <div className="flex items-center justify-between">
-                <p>
+                <div>
                   {data.title}{" "}
                   <span className="text-muted-foreground">({data.year})</span>
-                </p>
+                </div>
                 <span className="mr-4 flex align-middle gap-2">
                   <Star className="h-4 w-4" />
                   <span>{data.rating?.toFixed(1)} / 10</span>
@@ -121,11 +121,9 @@ export function PrivateDataTableRowActions<TData>({
         <DialogContent id="update-status">
           <DialogHeader>
             <DialogTitle>Update Status</DialogTitle>
-            <DialogDescription className="text-justify">
-              <div className="grid gap-4 py-4">
-                <SelectStatus value={data.status} setStatus={setStatus} />
-              </div>
-            </DialogDescription>
+            <div className="grid gap-4 py-4">
+              <SelectStatus value={status} setStatus={setStatus} />
+            </div>
           </DialogHeader>
           <DialogFooter>
             <Close asChild>

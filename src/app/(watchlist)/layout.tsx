@@ -7,7 +7,6 @@ import { SiteHeader } from "@/components/main/header";
 import { config } from "@/config/site";
 import { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
-import { ClerkProvider } from "@clerk/nextjs";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -53,7 +52,7 @@ export const metadata: Metadata = {
     creator: config.links.twitter.handle,
   },
   icons: {
-    icon: "/logo.png",
+    icon: "/icon.png",
     shortcut: "/images/icons/icon-72x72.png",
     apple: "/images/icons/icon-192x192.png",
   },
@@ -68,7 +67,7 @@ export default function WatchlistLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/icon.png" sizes="any" />
+        <link rel="shortcut icon" href="/icon.png" type="image/x-icon" />
       </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

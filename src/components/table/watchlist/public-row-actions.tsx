@@ -64,10 +64,10 @@ export function PublicDataTableRowActions<TData>({
           <DialogHeader>
             <DialogTitle>
               <div className="flex items-center justify-between">
-                <p>
+                <div>
                   {data.title}{" "}
                   <span className="text-muted-foreground">({data.year})</span>
-                </p>
+                </div>
                 <span className="mr-4 flex align-middle gap-2">
                   <Star className="h-4 w-4" />
                   <span>{data.rating?.toFixed(1)} / 10</span>
