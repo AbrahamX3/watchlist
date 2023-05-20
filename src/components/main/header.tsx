@@ -4,19 +4,28 @@ import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { ModeToggle } from "@/components/main/mode-toggle";
 import { Github, Globe, Sheet, Twitter } from "lucide-react";
-
+import Image from "next/image";
 export function SiteHeader() {
   return (
     <header className="supports-backdrop-blur:bg-background/60 sticky top-0 z-40 w-full border-b bg-background/95 shadow-sm backdrop-blur">
-      <div className="container flex h-14 items-center">
+      <div className="container flex h-14 items-center justify-between">
         <div className="mr-2 font-semibold flex items-center align-middle justify-center gap-2">
           <Link href="/" className="flex items-center gap-2 align-middle">
-            <Sheet className="h-5 w-5" />
-            <span>Abraham&apos;s Watchlist</span>
+            <Image
+              src="/icon.png"
+              alt="AbrahamX3 Icon"
+              className="h-6 w-6"
+              width={32}
+              height={32}
+            />
+            <p className="text-lg text-center">
+              <span className="hidden md:inline-block">Abraham&apos;s</span>{" "}
+              <span className="">Watchlist</span>
+            </p>
           </Link>
         </div>
-        <div className="flex flex-1 items-center justify-between md:justify-end">
-          <nav className="flex items-center space-x-1">
+        <div className="flex">
+          <nav className="flex items-center gap-1">
             <Link
               href={config.links.website.url}
               target="_blank"

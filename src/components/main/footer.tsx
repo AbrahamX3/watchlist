@@ -1,5 +1,5 @@
 import { config } from "@/config/site";
-
+import Image from "next/image";
 export function SiteFooter() {
   return (
     <footer className="border-t py-6 md:py-0">
@@ -15,7 +15,7 @@ export function SiteFooter() {
             >
               AbrahamX3
             </a>
-            . The source code is available on{" "}
+            . Source code available on{" "}
             <a
               href={config.links.github}
               target="_blank"
@@ -26,6 +26,16 @@ export function SiteFooter() {
             </a>
             .
           </p>
+        </div>
+        <div className="text-center items-center text-sm leading-loose text-muted-foreground flex gap-2 align-middle">
+          <p className="font-semibold">Powered by </p>
+          <Image
+            src="/icons/tmdb.svg"
+            alt="TMDb Icon"
+            className="h-12 w-12"
+            width={32}
+            height={32}
+          />
         </div>
       </div>
     </footer>

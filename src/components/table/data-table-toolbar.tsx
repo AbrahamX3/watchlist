@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { DataTableViewOptions } from "@/components/table/data-table-view-options";
 
 import { DataTableFacetedFilter } from "./data-table-faceted-filter";
-import { statusList, typeList } from "./watchlist/options";
+import { genreList, statusList, typeList } from "./watchlist/options";
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
@@ -22,42 +22,56 @@ export function DataTableToolbar<TData>({
     table.getFilteredRowModel().rows.length;
 
   return (
-    <div className="flex items-center justify-between">
-      <div className="flex flex-1 items-center space-x-2">
+    <div className="flex gap-2 lg:flex-row flex-col align-middle justify-between">
+      <div className="flex gap-2">
         <Input
           placeholder="Search titles..."
           value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn("title")?.setFilterValue(event.target.value)
           }
-          className="h-8 w-[150px] lg:w-[250px]"
+          className="h-8  lg:w-[250px]"
         />
-        {table.getColumn("status") && (
-          <DataTableFacetedFilter
-            column={table.getColumn("status")}
-            title="Status"
-            options={statusList}
-          />
-        )}
-        {table.getColumn("type") && (
-          <DataTableFacetedFilter
-            column={table.getColumn("type")}
-            title="Type"
-            options={typeList}
-          />
-        )}
+        <div>
+          <DataTableViewOptions table={table} />
+        </div>
         {isFiltered && (
           <Button
-            variant="ghost"
+            variant="outline"
             onClick={() => table.resetColumnFilters()}
             className="h-8 px-2 lg:px-3"
+            title="Reset Filters"
           >
-            Reset
-            <X className="ml-2 h-4 w-4" />
+            <span className="sm:inline-block hidden">Reset</span>
+            <X className="sm:ml-2 h-4 w-4" />
           </Button>
         )}
       </div>
-      <DataTableViewOptions table={table} />
+      <div className="flex align-middle justify-center items-center">
+        <div className="flex  flex-wrap sm:flex-row align-middle gap-2">
+          {table.getColumn("status") && (
+            <DataTableFacetedFilter
+              column={table.getColumn("status")}
+              title="Status"
+              options={statusList}
+            />
+          )}
+          {table.getColumn("type") && (
+            <DataTableFacetedFilter
+              column={table.getColumn("type")}
+              title="Type"
+              options={typeList}
+            />
+          )}
+          {table.getColumn("genres") && (
+            <DataTableFacetedFilter
+              column={table.getColumn("genres")}
+              title="Genres"
+              options={genreList}
+            />
+          )}
+        </div>
+      </div>
     </div>
   );
 }

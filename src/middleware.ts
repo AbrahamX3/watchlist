@@ -8,10 +8,10 @@ const publicPaths = [
 ];
 
 export default authMiddleware({
-  ignoredRoutes: [],
+  ignoredRoutes: ["/icon.png"],
   publicRoutes: publicPaths,
 });
 
 export const config = {
-  matcher: "/((?!_next/image|_next/static|icon.png).*)",
+  matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
 };

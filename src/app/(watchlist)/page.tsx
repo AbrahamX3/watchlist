@@ -2,6 +2,8 @@ import { publicColumns } from "@/components/table/watchlist/public-watchlist-col
 import { DataTable } from "@/components/table/data-table";
 import { prisma } from "@/server/db";
 import { Metadata } from "next";
+import { Film } from "lucide-react";
+import { LucideIcon } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Abraham's Watchlist - Home",
@@ -19,8 +21,8 @@ export default async function WatchList() {
   });
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between md:p-24">
-      <div className="container mx-auto py-10">
+    <main className="flex min-h-screen flex-col items-center justify-center py-8">
+      <div className="container mx-auto gap-2 w-full">
         <DataTable columns={publicColumns} data={data} />
       </div>
     </main>

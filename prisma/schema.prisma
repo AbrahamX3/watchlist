@@ -33,6 +33,7 @@ model Watchlist {
   imdbId      String   @unique
   tmdbId      String   @unique
   poster      String?
+  genres      String[]
   type        Type
   status      Status   @default(PENDING)
   createdAt   DateTime @default(now())
