@@ -1,7 +1,11 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { statusList, typeList } from "@/components/table/watchlist/options";
+import {
+  genreList,
+  statusList,
+  typeList,
+} from "@/components/table/watchlist/options";
 import { DataTableColumnHeader } from "../data-table-column-header";
 import { Watchlist } from "@prisma/client";
 import { PrivateDataTableRowActions } from "./private-row-actions";
@@ -45,13 +49,45 @@ export const privateColumns: ColumnDef<Watchlist>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Rating" />
     ),
+
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[500px] truncate font-medium">
+          <span
+            title={`${row.getValue("rating")} / 10`}
+            className="max-w-[500px] truncate font-medium"
+          >
             {Number(row.getValue("rating")).toFixed(1)}
           </span>
         </div>
+      );
+    },
+  },
+  {
+    accessorKey: "genres",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Genres" />
+    ),
+    cell: ({ row }) => {
+      const genres = genreList
+        .filter((genre) =>
+          row.getValue<string[]>("genres").includes(genre.value)
+        )
+        .map((genre) => genre.label);
+
+      if (!genres) {
+        return null;
+      }
+
+      return (
+        <div className="flex w-[100px] items-center">
+          <span>{genres.join(", ")}</span>
+        </div>
+      );
+    },
+    filterFn: (row, id, value) => {
+      return value.every((val: string) =>
+        row.getValue<string[]>(id).includes(val)
       );
     },
   },

@@ -25,7 +25,7 @@ export function SiteHeader() {
           </Link>
         </div>
         <div className="flex">
-          <nav className="flex items-center gap-1">
+          <nav className="flex items-center gap-1 mr-1">
             <Link
               href={config.links.website.url}
               target="_blank"

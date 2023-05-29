@@ -1,17 +1,18 @@
-import { authMiddleware } from "@clerk/nextjs/server";
-const publicPaths = [
-  "/",
-  "/sign-in",
-  "/sign-up",
-  "/api/watchlist/(.*)",
-  "/icon.png",
-];
+import { authMiddleware } from "@clerk/nextjs";
+
+const publicPaths = ["/", "/api/watchlist/(.*)", "/icon.png", "/manifest.json"];
 
 export default authMiddleware({
-  ignoredRoutes: ["/icon.png"],
+  ignoredRoutes: [],
   publicRoutes: publicPaths,
+  debug: true,
 });
 
 export const config = {
-  matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
+  matcher: [
+    "/((?!.*\\..*|_next).*)",
+    "/dashboard",
+    "/(api|trpc)(.*)",
+    "/dashboard",
+  ],
 };

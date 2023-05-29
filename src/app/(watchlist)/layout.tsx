@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     shortcut: "/images/icons/icon-72x72.png",
     apple: "/images/icons/icon-192x192.png",
   },
-  manifest: `${config.url}/site.webmanifest`,
+  manifest: `${config.url}/manifest.json`,
 };
 
 export default function WatchlistLayout({

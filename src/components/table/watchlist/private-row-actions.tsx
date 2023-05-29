@@ -116,13 +116,15 @@ export function PrivateDataTableRowActions<TData>({
 
       <Dialog
         open={statusModal}
-        onOpenChange={() => setStatusModal(!statusModal)}
+        onOpenChange={() => {
+          setStatusModal(!statusModal);
+        }}
       >
         <DialogContent id="update-status">
           <DialogHeader>
             <DialogTitle>Update Status</DialogTitle>
             <div className="grid gap-4 py-4">
-              <SelectStatus value={status} setStatus={setStatus} />
+              <SelectStatus value={data.status} setStatus={setStatus} />
             </div>
           </DialogHeader>
           <DialogFooter>

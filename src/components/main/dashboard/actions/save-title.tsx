@@ -1,6 +1,7 @@
 "use server";
 
 import { getBaseUrl } from "@/app/utils";
+import { Watchlist } from "@prisma/client";
 export async function saveTitle({
   id,
   type,
@@ -19,5 +20,7 @@ export async function saveTitle({
     }),
   });
 
-  const watchlist = await response.json();
+  const watchlist: Watchlist = await response.json();
+
+  return watchlist;
 }

@@ -1,5 +1,3 @@
-"use client";
-
 import { Table } from "@tanstack/react-table";
 import { X } from "lucide-react";
 
@@ -9,26 +7,30 @@ import { DataTableViewOptions } from "@/components/table/data-table-view-options
 
 import { DataTableFacetedFilter } from "./data-table-faceted-filter";
 import { genreList, statusList, typeList } from "./watchlist/options";
+import { SetState } from "@/types";
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
+  setGlobalFilter: SetState<string>;
 }
 
 export function DataTableToolbar<TData>({
   table,
+  setGlobalFilter,
 }: DataTableToolbarProps<TData>) {
   const isFiltered =
     table.getPreFilteredRowModel().rows.length >
     table.getFilteredRowModel().rows.length;
 
   return (
-    <div className="flex gap-2 lg:flex-row flex-col align-middle justify-between">
+    <div className="flex lg:flex-row flex-col align-middle justify-between">
       <div className="flex gap-2">
         <Input
           placeholder="Search titles..."
-          value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
-            table.getColumn("title")?.setFilterValue(event.target.value)
+            setGlobalFilter(
+              (event.target as HTMLInputElement).value.toLowerCase()
+            )
           }
           className="h-8  lg:w-[250px]"
         />

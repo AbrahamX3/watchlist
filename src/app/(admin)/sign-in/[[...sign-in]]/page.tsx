@@ -5,7 +5,7 @@ export default function Page() {
     <main className="flex min-h-screen flex-row items-center justify-center md:p-24">
       <SignIn
         path="/sign-in"
-        routing="path"
+        routing="virtual"
         afterSignInUrl="/dashboard"
         appearance={{
           elements: {

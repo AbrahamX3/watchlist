@@ -7,6 +7,8 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { DashboardHeader } from "@/components/main/dashboard/dashboard-header";
 import { Metadata } from "next";
 import { config } from "@/config/site";
+import { dark } from "@clerk/themes";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -56,7 +58,7 @@ export const metadata: Metadata = {
     shortcut: "/images/icons/icon-72x72.png",
     apple: "/images/icons/icon-192x192.png",
   },
-  manifest: `${config.url}/site.webmanifest`,
+  manifest: `${config.url}/manifest.json`,
 };
 
 export default function DashboardLayout({
@@ -65,7 +67,11 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      appearance={{
+        baseTheme: dark,
+      }}
+    >
       <html lang="en" suppressHydrationWarning>
         <head>
           <link rel="shortcut icon" href="/icon.png" type="image/x-icon" />
@@ -75,6 +81,7 @@ export default function DashboardLayout({
             <div className="relative flex min-h-screen flex-col">
               <DashboardHeader />
               <div className="flex-1">{children}</div>
+              <Toaster />
             </div>
             <Analytics />
             <TailwindIndicator />

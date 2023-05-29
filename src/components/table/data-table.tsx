@@ -44,6 +44,7 @@ export function DataTable<TData, TValue>({
     []
   );
   const [sorting, setSorting] = React.useState<SortingState>([]);
+  const [globalFilter, setGlobalFilter] = React.useState<string>("");
 
   const table = useReactTable({
     data,
@@ -53,12 +54,15 @@ export function DataTable<TData, TValue>({
       columnVisibility,
       rowSelection,
       columnFilters,
+      globalFilter,
     },
+    onGlobalFilterChange: setGlobalFilter,
     enableRowSelection: true,
     onRowSelectionChange: setRowSelection,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     onColumnVisibilityChange: setColumnVisibility,
+    enableGlobalFilter: true,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
@@ -69,7 +73,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="gap-4 flex flex-col">
-      <DataTableToolbar table={table} />
+      <DataTableToolbar table={table} setGlobalFilter={setGlobalFilter} />
       <div className="rounded-md border">
         <Table>
           <TableHeader>

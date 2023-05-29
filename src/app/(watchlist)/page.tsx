@@ -2,8 +2,8 @@ import { publicColumns } from "@/components/table/watchlist/public-watchlist-col
 import { DataTable } from "@/components/table/data-table";
 import { prisma } from "@/server/db";
 import { Metadata } from "next";
-import { Film } from "lucide-react";
-import { LucideIcon } from "lucide-react";
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Abraham's Watchlist - Home",
