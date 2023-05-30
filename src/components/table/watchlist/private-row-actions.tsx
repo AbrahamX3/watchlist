@@ -8,13 +8,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
@@ -26,13 +20,13 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "../../ui/dialog";
 import { Close } from "@radix-ui/react-dialog";
-import { boolean } from "zod";
 import { useState } from "react";
 import SelectStatus from "@/components/main/dashboard/select-status";
 import { updateStatus } from "@/components/main/dashboard/actions/update-status";
+import { updateTitle } from "@/components/main/dashboard/actions/update-title";
+import { toast } from "@/components/ui/use-toast";
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
@@ -69,8 +63,30 @@ export function PrivateDataTableRowActions<TData>({
             <DropdownMenuItem onClick={() => setDescriptionModal(true)}>
               <span>View Description</span>
             </DropdownMenuItem>
+            <DropdownMenuSeparator />
             <DropdownMenuItem onClick={() => setStatusModal(true)}>
               <span>Update Status</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={async () => {
+                const res = await updateTitle({
+                  id: data.tmdbId,
+                  type: data.type,
+                });
+
+                if (res.success) {
+                  toast({
+                    title: "Successfully updated title",
+                  });
+                } else {
+                  toast({
+                    title: "Failed to update title",
+                    description: res.error,
+                  });
+                }
+              }}
+            >
+              <span>Update Title</span>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

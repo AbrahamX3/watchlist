@@ -6,7 +6,6 @@ import { env } from "@/env.mjs";
 interface Body {
   tmdbId: string;
   type: "MOVIE" | "SERIES";
-  status?: "UPCOMING" | "PENDING" | "WATCHING" | "UNFINISHED" | "FINISHED";
 }
 
 export async function POST(request: Request) {
@@ -52,7 +51,6 @@ export async function POST(request: Request) {
   }
 
   const details = await getDetails(res.tmdbId, res.type);
-
   if (res.type === "MOVIE") {
     try {
       const data = await prisma.watchlist.update({
@@ -67,15 +65,19 @@ export async function POST(request: Request) {
           year: details.release_date,
           rating: details.vote_average,
           description: details.overview,
-          type: res.type,
-          status: res.status,
+          genres: details.genres.map((genre: { id: number; name: string }) =>
+            String(genre.id)
+          ),
         },
       });
+
       return NextResponse.json({
+        success: true,
         data,
       });
     } catch (error) {
       return NextResponse.json({
+        success: false,
         error,
       });
     }
@@ -95,16 +97,20 @@ export async function POST(request: Request) {
           year: details.first_air_date,
           rating: details.vote_average,
           description: details.overview,
-          type: res.type,
-          status: res.status,
+          genres: details.genres.map((genre: { id: number; name: string }) =>
+            String(genre.id)
+          ),
         },
       });
+
       return NextResponse.json({
         data,
+        success: true,
       });
     } catch (error) {
       return NextResponse.json({
         error,
+        success: false,
       });
     }
   } else {

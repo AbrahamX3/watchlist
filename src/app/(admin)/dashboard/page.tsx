@@ -11,7 +11,6 @@ export default async function Dashboard() {
   async function fetchTableData() {
     "use server";
 
-    console.log("fetched");
     const data = await prisma.watchlist.findMany({
       orderBy: [
         {

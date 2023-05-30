@@ -16,5 +16,5 @@ export async function updateStatus({
     }),
   });
 
-  const watchlist = await response.json();
+  return await response.json();
 }

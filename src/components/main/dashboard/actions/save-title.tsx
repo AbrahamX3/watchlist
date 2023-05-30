@@ -9,7 +9,7 @@ export async function saveTitle({
 }: {
   id: string;
   type: "MOVIE" | "SERIES";
-  status: string;
+  status: "UPCOMING" | "PENDING" | "WATCHING" | "UNFINISHED" | "FINISHED";
 }) {
   const response = await fetch(getBaseUrl() + "/api/watchlist/add", {
     method: "POST",
@@ -20,7 +20,5 @@ export async function saveTitle({
     }),
   });
 
-  const watchlist: Watchlist = await response.json();
-
-  return watchlist;
+  return await response.json();
 }
