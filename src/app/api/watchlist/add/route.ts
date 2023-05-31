@@ -65,6 +65,9 @@ export async function POST(request: Request) {
           description: details.overview,
           type: res.type,
           status: res.status,
+          genres: details.genres.map((genre: { id: number; name: string }) =>
+            String(genre.id)
+          ),
         },
       });
       return NextResponse.json({
@@ -90,6 +93,9 @@ export async function POST(request: Request) {
           description: details.overview,
           type: res.type,
           status: res.status,
+          genres: details.genres.map((genre: { id: number; name: string }) =>
+            String(genre.id)
+          ),
         },
       });
       return NextResponse.json({
