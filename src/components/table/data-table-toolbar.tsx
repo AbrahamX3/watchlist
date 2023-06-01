@@ -49,8 +49,8 @@ export function DataTableToolbar<TData>({
           </Button>
         )}
       </div>
-      <div className="flex align-middle justify-center items-center">
-        <div className="flex  flex-wrap sm:flex-row align-middle gap-2">
+      <div className="flex items-center justify-center pt-4 align-middle lg:pt-0">
+        <div className="flex flex-wrap gap-2 align-middle sm:flex-row">
           {table.getColumn("status") && (
             <DataTableFacetedFilter
               column={table.getColumn("status")}
