@@ -1,22 +1,10 @@
-import { getBaseUrl } from "@/app/utils";
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectGroup,
-  SelectLabel,
-  SelectItem,
-  SelectSeparator,
-} from "@/components/ui/select";
-import { SetState, SelectedTitle } from "@/types";
-import { ScrollArea } from "@radix-ui/react-scroll-area";
-import Image from "next/image";
 import useSWR from "swr";
-import { Controller, useForm } from "react-hook-form";
-import { Button } from "@/components/ui/button";
 
-export default async function SelectTitle({
+import { getBaseUrl } from "@/app/utils";
+import { Button } from "@/components/ui/button";
+import { type SetState, type SelectedTitle } from "@/types";
+
+export default function SelectTitle({
   search,
   setTitle,
   id,

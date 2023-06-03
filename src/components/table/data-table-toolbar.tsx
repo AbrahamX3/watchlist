@@ -1,13 +1,13 @@
-import { Table } from "@tanstack/react-table";
+import { type Table } from "@tanstack/react-table";
 import { X } from "lucide-react";
 
+import { DataTableViewOptions } from "@/components/table/data-table-view-options";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { DataTableViewOptions } from "@/components/table/data-table-view-options";
+import { type SetState } from "@/types";
 
 import { DataTableFacetedFilter } from "./data-table-faceted-filter";
 import { genreList, statusList, typeList } from "./watchlist/options";
-import { SetState } from "@/types";
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;

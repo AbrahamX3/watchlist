@@ -1,11 +1,14 @@
 import { ThemeProvider } from "@/components/main/theme-provider";
+
 import "../globals.css";
 import { Inter } from "next/font/google";
+
 import { TailwindIndicator } from "@/components/main/tailwind-indicator";
 import { SiteFooter } from "@/components/main/footer";
 import { SiteHeader } from "@/components/main/header";
 import { config } from "@/config/site";
-import { Metadata } from "next";
+
+import { type Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });

@@ -1,4 +1,8 @@
+import { useState } from "react";
+
+import { statusList } from "@/components/table/watchlist/options";
 import { Label } from "@/components/ui/label";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Select,
   SelectContent,
@@ -9,10 +13,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { statusList } from "@/components/table/watchlist/options";
-import { SetState } from "@/types";
-import { useState } from "react";
+import { type SetState } from "@/types";
+
 export default function SelectStatus({
   setStatus,
   value,

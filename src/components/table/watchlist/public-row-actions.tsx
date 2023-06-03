@@ -1,6 +1,8 @@
 "use client";
 
-import { Row } from "@tanstack/react-table";
+import { type Watchlist } from "@prisma/client";
+import { Close } from "@radix-ui/react-dialog";
+import { type Row } from "@tanstack/react-table";
 import { Copy, MoreHorizontal, Pen, Star, Tags, Trash } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -18,7 +20,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { Watchlist } from "@prisma/client";
 import {
   Dialog,
   DialogContent,
@@ -28,7 +29,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../../ui/dialog";
-import { Close } from "@radix-ui/react-dialog";
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;

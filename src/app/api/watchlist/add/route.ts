@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/server/db";
+
 import { env } from "@/env.mjs";
+import { prisma } from "@/server/db";
 
 interface Body {
   tmdbId: string;

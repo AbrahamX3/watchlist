@@ -1,9 +1,3 @@
-import Link from "next/link";
-import { config } from "@/config/site";
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
-import { ModeToggle } from "@/components/main/mode-toggle";
-import { Github, Globe, Sheet, Twitter } from "lucide-react";
 import {
   SignedIn,
   UserButton,
@@ -11,8 +5,16 @@ import {
   SignInButton,
   useAuth,
 } from "@clerk/nextjs";
-import ClerkButton from "./clerk-button";
+import { Github, Globe, Sheet, Twitter } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+
+import { ModeToggle } from "@/components/main/mode-toggle";
+import { buttonVariants } from "@/components/ui/button";
+import { config } from "@/config/site";
+import { cn } from "@/lib/utils";
+
+import ClerkButton from "./clerk-button";
 
 export function DashboardHeader() {
   return (

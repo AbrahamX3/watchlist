@@ -1,9 +1,10 @@
-import { DataTable } from "@/components/table/data-table";
-import { prisma } from "@/server/db";
-import { privateColumns } from "@/components/table/watchlist/private-watchlist-columns";
-import AddWatchlistModal from "@/components/main/dashboard/add-watchlist-modal";
-import { Skeleton } from "@/components/ui/skeleton";
 import { Suspense } from "react";
+
+import AddWatchlistModal from "@/components/main/dashboard/add-watchlist-modal";
+import { DataTable } from "@/components/table/data-table";
+import { columns } from "@/components/table/watchlist/private-watchlist-columns";
+import { Skeleton } from "@/components/ui/skeleton";
+import { prisma } from "@/server/db";
 
 export const dynamic = "force-dynamic";
 
@@ -37,7 +38,7 @@ export default async function Dashboard() {
               <AddWatchlistModal fetcher={fetchTableData} />
             </Suspense>
           </div>
-          <DataTable columns={privateColumns} data={data} />
+          <DataTable columns={columns} data={data} />
         </div>
       </main>
     </>

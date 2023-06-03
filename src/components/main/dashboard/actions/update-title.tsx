@@ -16,6 +16,6 @@ export async function updateTitle({
     }),
   });
 
-  const data = await response.json();
+  const data = (await response.json()) as { success: boolean; error?: string };
   return data;
 }

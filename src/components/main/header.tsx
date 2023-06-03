@@ -1,10 +1,11 @@
-import Link from "next/link";
-import { config } from "@/config/site";
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
-import { ModeToggle } from "@/components/main/mode-toggle";
 import { Github, Globe, Sheet, Twitter } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+
+import { ModeToggle } from "@/components/main/mode-toggle";
+import { buttonVariants } from "@/components/ui/button";
+import { config } from "@/config/site";
+import { cn } from "@/lib/utils";
 export function SiteHeader() {
   return (
     <header className="supports-backdrop-blur:bg-background/60 sticky top-0 z-40 w-full border-b bg-background/95 shadow-sm backdrop-blur">

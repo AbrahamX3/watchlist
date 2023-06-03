@@ -1,14 +1,16 @@
 import { ThemeProvider } from "@/components/main/theme-provider";
+
 import "../globals.css";
-import { Inter } from "next/font/google";
-import { TailwindIndicator } from "@/components/main/tailwind-indicator";
-import { Analytics } from "@vercel/analytics/react";
 import { ClerkProvider } from "@clerk/nextjs";
-import { DashboardHeader } from "@/components/main/dashboard/dashboard-header";
-import { Metadata } from "next";
-import { config } from "@/config/site";
 import { dark } from "@clerk/themes";
+import { Analytics } from "@vercel/analytics/react";
+import { type Metadata } from "next";
+import { Inter } from "next/font/google";
+
+import { DashboardHeader } from "@/components/main/dashboard/dashboard-header";
+import { TailwindIndicator } from "@/components/main/tailwind-indicator";
 import { Toaster } from "@/components/ui/toaster";
+import { config } from "@/config/site";
 
 const inter = Inter({ subsets: ["latin"] });
 

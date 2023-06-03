@@ -1,8 +1,15 @@
 "use client";
 
-import { Row } from "@tanstack/react-table";
-import { Copy, MoreHorizontal, Pen, Star, Tags, Trash } from "lucide-react";
+import { useState } from "react";
 
+import { type Watchlist } from "@prisma/client";
+import { Close } from "@radix-ui/react-dialog";
+import { type Row } from "@tanstack/react-table";
+import { MoreHorizontal, Star } from "lucide-react";
+
+import { updateStatus } from "@/components/main/dashboard/actions/update-status";
+import { updateTitle } from "@/components/main/dashboard/actions/update-title";
+import SelectStatus from "@/components/main/dashboard/select-status";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -11,8 +18,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { toast } from "@/components/ui/use-toast";
 
-import { Watchlist } from "@prisma/client";
 import {
   Dialog,
   DialogContent,
@@ -21,12 +28,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "../../ui/dialog";
-import { Close } from "@radix-ui/react-dialog";
-import { useState } from "react";
-import SelectStatus from "@/components/main/dashboard/select-status";
-import { updateStatus } from "@/components/main/dashboard/actions/update-status";
-import { updateTitle } from "@/components/main/dashboard/actions/update-title";
-import { toast } from "@/components/ui/use-toast";
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
@@ -70,7 +71,7 @@ export function PrivateDataTableRowActions<TData>({
             <DropdownMenuItem
               onClick={async () => {
                 const res = await updateTitle({
-                  id: data.tmdbId,
+                  id: String(data.tmdbId),
                   type: data.type,
                 });
 
@@ -151,7 +152,7 @@ export function PrivateDataTableRowActions<TData>({
               type="button"
               onClick={async () =>
                 await updateStatus({
-                  id: data.id as string,
+                  id: data.id,
                   status: status as
                     | "UPCOMING"
                     | "PENDING"

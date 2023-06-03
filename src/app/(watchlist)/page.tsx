@@ -1,7 +1,8 @@
-import { publicColumns } from "@/components/table/watchlist/public-watchlist-columns";
+import { type Metadata } from "next";
+
 import { DataTable } from "@/components/table/data-table";
+import { publicColumns } from "@/components/table/watchlist/public-watchlist-columns";
 import { prisma } from "@/server/db";
-import { Metadata } from "next";
 
 export const revalidate = 60;
 

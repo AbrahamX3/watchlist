@@ -1,5 +1,6 @@
-import { config } from "@/config/site";
 import Image from "next/image";
+
+import { config } from "@/config/site";
 export function SiteFooter() {
   return (
     <footer className="border-t py-6 md:py-0">

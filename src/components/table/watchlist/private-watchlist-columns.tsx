@@ -1,16 +1,18 @@
 "use client";
 
-import { ColumnDef } from "@tanstack/react-table";
+import { type Watchlist } from "@prisma/client";
+import { type ColumnDef } from "@tanstack/react-table";
+
 import {
   genreList,
   statusList,
   typeList,
 } from "@/components/table/watchlist/options";
-import { DataTableColumnHeader } from "../data-table-column-header";
-import { Watchlist } from "@prisma/client";
-import { PrivateDataTableRowActions } from "./private-row-actions";
 
-export const privateColumns: ColumnDef<Watchlist>[] = [
+import { PrivateDataTableRowActions } from "./private-row-actions";
+import { DataTableColumnHeader } from "../data-table-column-header";
+
+export const columns: ColumnDef<Watchlist>[] = [
   {
     accessorKey: "title",
     header: ({ column }) => (
@@ -40,7 +42,7 @@ export const privateColumns: ColumnDef<Watchlist>[] = [
         </div>
       );
     },
-    filterFn: (row, id, value) => {
+    filterFn: (row, id, value: string) => {
       return value.includes(row.getValue(id));
     },
   },
@@ -51,10 +53,11 @@ export const privateColumns: ColumnDef<Watchlist>[] = [
     ),
 
     cell: ({ row }) => {
+      const rating = Number(row.getValue("rating")).toFixed(1);
       return (
         <div className="flex space-x-2">
           <span
-            title={`${row.getValue("rating")} / 10`}
+            title={`${rating} / 10`}
             className="max-w-[500px] truncate font-medium"
           >
             {Number(row.getValue("rating")).toFixed(1)}
@@ -85,7 +88,7 @@ export const privateColumns: ColumnDef<Watchlist>[] = [
         </div>
       );
     },
-    filterFn: (row, id, value) => {
+    filterFn: (row, id, value: string[]) => {
       return value.every((val: string) =>
         row.getValue<string[]>(id).includes(val)
       );
@@ -112,7 +115,7 @@ export const privateColumns: ColumnDef<Watchlist>[] = [
         </div>
       );
     },
-    filterFn: (row, id, value) => {
+    filterFn: (row, id, value: string) => {
       return value.includes(row.getValue(id));
     },
   },
@@ -139,7 +142,7 @@ export const privateColumns: ColumnDef<Watchlist>[] = [
         </div>
       );
     },
-    filterFn: (row, id, value) => {
+    filterFn: (row, id, value: string) => {
       return value.includes(row.getValue(id));
     },
   },

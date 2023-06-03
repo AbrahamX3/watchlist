@@ -1,5 +1,16 @@
 "use client";
 
+import { useState } from "react";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Watchlist } from "@prisma/client";
+import { ScrollArea } from "@radix-ui/react-scroll-area";
+import Image from "next/image";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+
+import { statusList } from "@/components/table/watchlist/options";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -8,24 +19,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
-import { saveTitle } from "./actions/save-title";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectSeparator,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { ScrollArea } from "@radix-ui/react-scroll-area";
-import { useForm } from "react-hook-form";
-import { statusList } from "@/components/table/watchlist/options";
-import { useState } from "react";
-import Image from "next/image";
 import {
   Form,
   FormControl,
@@ -34,10 +27,20 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Separator } from "@/components/ui/separator";
+import { saveTitle } from "./actions/save-title";
+
 import { useToast } from "@/components/ui/use-toast";
-import { Watchlist } from "@prisma/client";
 
 const formSchema = z.object({
   title: z.string(),
@@ -84,7 +87,12 @@ export default function AddWatchlistModal({
     saveTitle({
       id,
       type,
-      status: values.status,
+      status: values.status as
+        | "PENDING"
+        | "UPCOMING"
+        | "WATCHING"
+        | "UNFINISHED"
+        | "FINISHED",
     }).then(() => {
       form.reset();
       setSearch("");

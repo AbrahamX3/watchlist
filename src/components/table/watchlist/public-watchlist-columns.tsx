@@ -1,14 +1,16 @@
 "use client";
 
-import { ColumnDef } from "@tanstack/react-table";
+import { type Watchlist } from "@prisma/client";
+import { type ColumnDef } from "@tanstack/react-table";
+
 import {
   genreList,
   statusList,
   typeList,
 } from "@/components/table/watchlist/options";
-import { DataTableColumnHeader } from "../data-table-column-header";
-import { Watchlist } from "@prisma/client";
+
 import { PublicDataTableRowActions } from "./public-row-actions";
+import { DataTableColumnHeader } from "../data-table-column-header";
 
 export const publicColumns: ColumnDef<Watchlist>[] = [
   {
@@ -40,7 +42,7 @@ export const publicColumns: ColumnDef<Watchlist>[] = [
         </div>
       );
     },
-    filterFn: (row, id, value) => {
+    filterFn: (row, id, value: string) => {
       return value.includes(row.getValue(id));
     },
   },
@@ -81,7 +83,7 @@ export const publicColumns: ColumnDef<Watchlist>[] = [
         </div>
       );
     },
-    filterFn: (row, id, value) => {
+    filterFn: (row, id, value: string[]) => {
       return value.every((val: string) =>
         row.getValue<string[]>(id).includes(val)
       );
@@ -108,7 +110,7 @@ export const publicColumns: ColumnDef<Watchlist>[] = [
         </div>
       );
     },
-    filterFn: (row, id, value) => {
+    filterFn: (row, id, value: string) => {
       return value.includes(row.getValue(id));
     },
   },
@@ -135,7 +137,7 @@ export const publicColumns: ColumnDef<Watchlist>[] = [
         </div>
       );
     },
-    filterFn: (row, id, value) => {
+    filterFn: (row, id, value: string) => {
       return value.includes(row.getValue(id));
     },
   },
