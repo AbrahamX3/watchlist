@@ -2,7 +2,7 @@
 
 import { Watchlist } from "@prisma/client";
 
-import { getBaseUrl } from "@/app/utils";
+import { getBaseUrl } from "@/utils";
 export async function saveTitle({
   id,
   type,

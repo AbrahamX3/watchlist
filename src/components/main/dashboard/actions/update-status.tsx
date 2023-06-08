@@ -1,6 +1,6 @@
 "use server";
 
-import { getBaseUrl } from "@/app/utils";
+import { getBaseUrl } from "@/utils";
 export async function updateStatus({
   id,
   status,

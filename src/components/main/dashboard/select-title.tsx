@@ -1,6 +1,6 @@
 import useSWR from "swr";
 
-import { getBaseUrl } from "@/app/utils";
+import { getBaseUrl } from "@/utils";
 import { Button } from "@/components/ui/button";
 import { type SetState, type SelectedTitle } from "@/types";
 
