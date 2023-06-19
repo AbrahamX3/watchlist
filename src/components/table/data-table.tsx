@@ -1,12 +1,8 @@
 "use client";
 
 import * as React from "react";
-
+import { useState } from "react";
 import {
-  type ColumnDef,
-  type ColumnFiltersState,
-  type SortingState,
-  type VisibilityState,
   flexRender,
   getCoreRowModel,
   getFacetedRowModel,
@@ -15,10 +11,13 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
+  type ColumnDef,
+  type ColumnFiltersState,
+  type SortingState,
+  type VisibilityState,
 } from "@tanstack/react-table";
 
 import { DataTablePagination } from "@/components/table/data-table-pagination";
-import { DataTableToolbar } from "@/components/table/data-table-toolbar";
 import {
   Table,
   TableBody,
@@ -28,21 +27,22 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
+import { DataTableToolbar, type Filter } from "./data-table-toolbar";
+
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  filters?: Filter[];
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  filters,
 }: DataTableProps<TData, TValue>) {
-  const [rowSelection, setRowSelection] = React.useState({});
-  const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({});
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  );
+  const [rowSelection, setRowSelection] = useState({});
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [globalFilter, setGlobalFilter] = React.useState<string>("");
 
@@ -72,8 +72,13 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="gap-4 flex flex-col">
-      <DataTableToolbar table={table} setGlobalFilter={setGlobalFilter} />
+    <div className="flex flex-col gap-4">
+      <DataTableToolbar
+        table={table}
+        filters={filters}
+        setGlobalFilter={setGlobalFilter}
+        globalFilter={globalFilter}
+      />
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -115,9 +120,9 @@ export function DataTable<TData, TValue>({
               <TableRow>
                 <TableCell
                   colSpan={columns.length}
-                  className="h-24 text-center"
+                  className="h-24 text-center font-bold"
                 >
-                  No results.
+                  No se encontraron registros
                 </TableCell>
               </TableRow>
             )}

@@ -3,14 +3,9 @@
 import { type Watchlist } from "@prisma/client";
 import { type ColumnDef } from "@tanstack/react-table";
 
-import {
-  genreList,
-  statusList,
-  typeList,
-} from "@/components/table/watchlist/options";
-
+import { DataTableColumnHeader } from "@/components/table/data-table-column-header";
 import { PrivateDataTableRowActions } from "./private-row-actions";
-import { DataTableColumnHeader } from "../data-table-column-header";
+import { genreList, statusList, typeList } from "./options";
 
 export const columns: ColumnDef<Watchlist>[] = [
   {

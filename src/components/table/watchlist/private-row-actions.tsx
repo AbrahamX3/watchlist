@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 
 import { type Watchlist } from "@prisma/client";
@@ -28,6 +27,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "../../ui/dialog";
+import { useRouter } from "next/navigation";
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
@@ -37,7 +37,7 @@ export function PrivateDataTableRowActions<TData>({
   row,
 }: DataTableRowActionsProps<TData>) {
   const data = row.original as Watchlist;
-
+  const router = useRouter();
   const [statusModal, setStatusModal] = useState<boolean>(false);
   const [descriptionModal, setDescriptionModal] = useState<boolean>(false);
   const [status, setStatus] = useState<string>("");
@@ -45,6 +45,7 @@ export function PrivateDataTableRowActions<TData>({
   function reset() {
     setStatus("");
     setStatusModal(false);
+    router.refresh();
   }
 
   return (
@@ -79,11 +80,13 @@ export function PrivateDataTableRowActions<TData>({
                   toast({
                     title: "Successfully updated title",
                   });
+                  reset();
                 } else {
                   toast({
                     title: "Failed to update title",
                     description: res.error,
                   });
+                  reset();
                 }
               }}
             >

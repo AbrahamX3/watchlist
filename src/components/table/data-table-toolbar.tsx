@@ -1,5 +1,5 @@
 import { type Table } from "@tanstack/react-table";
-import { X } from "lucide-react";
+import { X, type LucideIcon } from "lucide-react";
 
 import { DataTableViewOptions } from "@/components/table/data-table-view-options";
 import { Button } from "@/components/ui/button";
@@ -7,71 +7,76 @@ import { Input } from "@/components/ui/input";
 import { type SetState } from "@/types";
 
 import { DataTableFacetedFilter } from "./data-table-faceted-filter";
-import { genreList, statusList, typeList } from "./watchlist/options";
+
+interface Options {
+  label: string;
+  value: string;
+  icon?: LucideIcon;
+}
+
+export interface Filter {
+  columnId: string;
+  title: string;
+  options: Options[];
+}
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
   setGlobalFilter: SetState<string>;
+  globalFilter: string;
+  filters?: Filter[];
 }
 
 export function DataTableToolbar<TData>({
   table,
   setGlobalFilter,
+  globalFilter,
+  filters,
 }: DataTableToolbarProps<TData>) {
   const isFiltered =
     table.getPreFilteredRowModel().rows.length >
     table.getFilteredRowModel().rows.length;
 
   return (
-    <div className="flex lg:flex-row flex-col align-middle justify-between">
+    <div className="flex flex-col justify-between rounded-md align-middle lg:flex-row">
       <div className="flex gap-2">
         <Input
-          placeholder="Search titles..."
+          placeholder="Buscar..."
+          value={globalFilter || ""}
           onChange={(event) =>
             setGlobalFilter(
               (event.target as HTMLInputElement).value.toLowerCase()
             )
           }
-          className="h-8  lg:w-[250px]"
+          className="h-8 lg:w-[250px]"
         />
-        <div>
-          <DataTableViewOptions table={table} />
-        </div>
+        <DataTableViewOptions table={table} />
         {isFiltered && (
           <Button
             variant="outline"
-            onClick={() => table.resetColumnFilters()}
+            onClick={() => {
+              table.resetColumnFilters();
+              table.setGlobalFilter("");
+              setGlobalFilter("");
+            }}
             className="h-8 px-2 lg:px-3"
             title="Reset Filters"
           >
-            <span className="sm:inline-block hidden">Reset</span>
-            <X className="sm:ml-2 h-4 w-4" />
+            <span className="hidden sm:inline-block">Reset</span>
+            <X className="h-4 w-4 sm:ml-2" />
           </Button>
         )}
       </div>
       <div className="flex items-center justify-center pt-4 align-middle lg:pt-0">
         <div className="flex flex-wrap gap-2 align-middle sm:flex-row">
-          {table.getColumn("status") && (
+          {filters?.map((filter) => (
             <DataTableFacetedFilter
-              column={table.getColumn("status")}
-              title="Status"
-              options={statusList}
+              key={filter.columnId}
+              column={table.getColumn(filter.columnId)}
+              title={filter.title}
+              options={filter.options}
             />
-          )}
-          {table.getColumn("type") && (
-            <DataTableFacetedFilter
-              column={table.getColumn("type")}
-              title="Type"
-              options={typeList}
-            />
-          )}
-          {table.getColumn("genres") && (
-            <DataTableFacetedFilter
-              column={table.getColumn("genres")}
-              title="Genres"
-              options={genreList}
-            />
-          )}
+          )) || null}
         </div>
       </div>
     </div>

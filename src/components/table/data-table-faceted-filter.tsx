@@ -1,7 +1,7 @@
+"use client";
 import * as React from "react";
-
 import { type Column } from "@tanstack/react-table";
-import { Check, type LucideIcon, PlusCircle } from "lucide-react";
+import { Check, PlusCircle, type LucideIcon } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -80,11 +80,11 @@ export function DataTableFacetedFilter<TData, TValue>({
           )}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0" align="end">
+      <PopoverContent className="w-fit p-0" align="end">
         <Command>
           <CommandInput placeholder={title} />
           <CommandList>
-            <CommandEmpty>No results found.</CommandEmpty>
+            <CommandEmpty>No se encontraron resultados</CommandEmpty>
             <CommandGroup>
               {options.map((option) => {
                 const isSelected = selectedValues.includes(option.value);
@@ -119,13 +119,17 @@ export function DataTableFacetedFilter<TData, TValue>({
                     {option.icon && (
                       <option.icon className="mr-2 h-4 w-4 text-muted-foreground" />
                     )}
-                    <span>{option.label}</span>
+                    <span className="w-24 truncate" title={option.label}>
+                      {option.label}
+                    </span>
                     <span className="ml-auto flex h-4 w-4 items-center justify-center font-mono text-xs">
                       {column?.getFacetedUniqueValues()?.keys()
                         ? Array.from(column?.getFacetedUniqueValues()).reduce(
-                            (accumulator, [key, value]) => {
-                              if (key.includes(option.value)) {
-                                return accumulator + value;
+                            (accumulator, [key, value]: [string, number]) => {
+                              if (key) {
+                                if (key.includes(option.value)) {
+                                  return accumulator + value;
+                                }
                               }
                               return accumulator;
                             },
@@ -145,7 +149,7 @@ export function DataTableFacetedFilter<TData, TValue>({
                     onSelect={() => column?.setFilterValue(undefined)}
                     className="justify-center text-center"
                   >
-                    Clear filters
+                    Limpiar filtros
                   </CommandItem>
                 </CommandGroup>
               </>
