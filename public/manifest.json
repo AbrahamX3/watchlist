@@ -1,6 +1,7 @@
 {
     "name": "Abraham's Personal Watchlist",
     "short_name": "Abraham's Watchlist",
+    "start_url": "/",
     "icons": [
         {
             "src": "images/icons/icon-72x72.png",

@@ -3,16 +3,11 @@
 import { type Watchlist } from "@prisma/client";
 import { type ColumnDef } from "@tanstack/react-table";
 
-import {
-  genreList,
-  statusList,
-  typeList,
-} from "@/components/table/watchlist/options";
-
+import { DataTableColumnHeader } from "@/components/table/data-table-column-header";
+import { genreList, statusList, typeList } from "./options";
 import { PublicDataTableRowActions } from "./public-row-actions";
-import { DataTableColumnHeader } from "../data-table-column-header";
 
-export const publicColumns: ColumnDef<Watchlist>[] = [
+export const columns: ColumnDef<Watchlist>[] = [
   {
     accessorKey: "title",
     header: ({ column }) => (
@@ -51,10 +46,15 @@ export const publicColumns: ColumnDef<Watchlist>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Rating" />
     ),
+
     cell: ({ row }) => {
+      const rating = Number(row.getValue("rating")).toFixed(1);
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[500px] truncate font-medium">
+          <span
+            title={`${rating} / 10`}
+            className="max-w-[500px] truncate font-medium"
+          >
             {Number(row.getValue("rating")).toFixed(1)}
           </span>
         </div>

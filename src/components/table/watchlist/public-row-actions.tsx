@@ -3,20 +3,13 @@
 import { type Watchlist } from "@prisma/client";
 import { Close } from "@radix-ui/react-dialog";
 import { type Row } from "@tanstack/react-table";
-import { Copy, MoreHorizontal, Pen, Star, Tags, Trash } from "lucide-react";
+import { MoreHorizontal, Star } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 

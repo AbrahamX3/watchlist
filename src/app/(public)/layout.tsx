@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     creator: config.links.twitter.handle,
   },
   icons: {
-    icon: "/icon.png",
+    icon: `${config.url}/images/icon.png`,
     shortcut: "/images/icons/icon-72x72.png",
     apple: "/images/icons/icon-192x192.png",
   },
@@ -70,7 +70,7 @@ export default function WatchlistLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="shortcut icon" href="/icon.png" type="image/x-icon" />
+        <link rel="shortcut icon" href="/images/icon.png" type="image/x-icon" />
       </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

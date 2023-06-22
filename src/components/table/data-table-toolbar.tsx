@@ -41,7 +41,7 @@ export function DataTableToolbar<TData>({
     <div className="flex flex-col justify-between rounded-md align-middle lg:flex-row">
       <div className="flex gap-2">
         <Input
-          placeholder="Buscar..."
+          placeholder="Search titles..."
           value={globalFilter || ""}
           onChange={(event) =>
             setGlobalFilter(

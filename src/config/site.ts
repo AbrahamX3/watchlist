@@ -1,6 +1,6 @@
 export const config = {
   name: "Abraham's Personal Watchlist",
-  url: "https://watchlist.abraham-dev.tech",
+  url: "http://localhost:3000",
   ogImage: "https://watchlist.abraham-dev.tech/og_icon.png",
   description:
     "My personal watchlist of Movies and Series that I've watched, am watching and upcoming stuff that I'm intrested in.",

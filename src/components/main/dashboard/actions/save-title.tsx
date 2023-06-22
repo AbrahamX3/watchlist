@@ -1,6 +1,6 @@
 "use server";
 
-import { Watchlist } from "@prisma/client";
+import { type Watchlist } from "@prisma/client";
 
 import { getBaseUrl } from "@/utils";
 export async function saveTitle({

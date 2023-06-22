@@ -84,7 +84,7 @@ export function DataTableFacetedFilter<TData, TValue>({
         <Command>
           <CommandInput placeholder={title} />
           <CommandList>
-            <CommandEmpty>No se encontraron resultados</CommandEmpty>
+            <CommandEmpty>No results found</CommandEmpty>
             <CommandGroup>
               {options.map((option) => {
                 const isSelected = selectedValues.includes(option.value);
@@ -149,7 +149,7 @@ export function DataTableFacetedFilter<TData, TValue>({
                     onSelect={() => column?.setFilterValue(undefined)}
                     className="justify-center text-center"
                   >
-                    Limpiar filtros
+                    Clear Filters
                   </CommandItem>
                 </CommandGroup>
               </>

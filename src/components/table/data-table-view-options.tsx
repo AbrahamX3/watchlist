@@ -25,17 +25,17 @@ export function DataTableViewOptions<TData>({
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="sm" className="ml-auto h-8 lg:flex">
           <SlidersHorizontal className="mr-2 hidden h-4 w-4 sm:flex" />
-          Columnas
+          Columns
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[150px]">
-        <DropdownMenuLabel>Columnas</DropdownMenuLabel>
+        <DropdownMenuLabel>Columns</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {table
           .getAllColumns()
           .filter(
             (column) =>
-              typeof column.accessorFn !== "undefined" && column.getCanHide(),
+              typeof column.accessorFn !== "undefined" && column.getCanHide()
           )
           .map((column) => {
             return (

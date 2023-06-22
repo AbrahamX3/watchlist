@@ -76,7 +76,11 @@ export default function DashboardLayout({
     >
       <html lang="en" suppressHydrationWarning>
         <head>
-          <link rel="shortcut icon" href="/icon.png" type="image/x-icon" />
+          <link
+            rel="shortcut icon"
+            href="/images/icon.png"
+            type="image/x-icon"
+          />
         </head>
         <body className={inter.className}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

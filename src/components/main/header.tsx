@@ -1,4 +1,4 @@
-import { Github, Globe, Sheet, Twitter } from "lucide-react";
+import { Github, Globe, Twitter } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 

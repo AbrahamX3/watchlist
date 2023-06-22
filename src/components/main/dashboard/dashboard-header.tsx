@@ -1,18 +1,7 @@
-import {
-  SignedIn,
-  UserButton,
-  SignedOut,
-  SignInButton,
-  useAuth,
-} from "@clerk/nextjs";
-import { Github, Globe, Sheet, Twitter } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 import { ModeToggle } from "@/components/main/mode-toggle";
-import { buttonVariants } from "@/components/ui/button";
-import { config } from "@/config/site";
-import { cn } from "@/lib/utils";
 
 import ClerkButton from "./clerk-button";
 
