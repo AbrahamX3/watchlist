@@ -1,6 +1,11 @@
 import { authMiddleware } from "@clerk/nextjs";
 export default authMiddleware({
-  publicRoutes: ["/", "/api/watchlist/(.*)", "/icon.png", "/manifest.json"],
+  publicRoutes: [
+    "/",
+    "/api/watchlist/(.*)",
+    "/images/icon.png",
+    "/manifest.json",
+  ],
 });
 
 export const config = {

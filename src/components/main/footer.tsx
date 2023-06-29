@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { config } from "@/config/site";
+import Link from "next/link";
 export function SiteFooter() {
   return (
     <footer className="border-t py-6 md:py-0">
@@ -30,13 +31,15 @@ export function SiteFooter() {
         </div>
         <div className="text-center items-center text-sm leading-loose text-muted-foreground flex gap-2 align-middle">
           <p className="font-semibold">Powered by </p>
-          <Image
-            src="/icons/tmdb.svg"
-            alt="TMDb Icon"
-            className="h-12 w-12"
-            width={32}
-            height={32}
-          />
+          <a rel="noopener" target="_blank" href="https://www.themoviedb.org/">
+            <Image
+              src="/icons/tmdb.svg"
+              alt="TMDb Icon"
+              className="h-12 w-12"
+              width={32}
+              height={32}
+            />
+          </a>
         </div>
       </div>
     </footer>

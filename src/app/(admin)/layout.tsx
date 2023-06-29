@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     creator: config.links.twitter.handle,
   },
   icons: {
-    icon: "/icon.png",
+    icon: "/images/icon.png",
     shortcut: "/images/icons/icon-72x72.png",
     apple: "/images/icons/icon-192x192.png",
   },

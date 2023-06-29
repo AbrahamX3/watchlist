@@ -13,7 +13,7 @@ export function SiteHeader() {
         <div className="mr-2 font-semibold flex items-center align-middle justify-center gap-2">
           <Link href="/" className="flex items-center gap-2 align-middle">
             <Image
-              src="/icon.png"
+              src="/images/icon.png"
               alt="AbrahamX3 Icon"
               className="h-6 w-6"
               width={32}
